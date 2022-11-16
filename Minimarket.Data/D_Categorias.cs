@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using Minimarket.Entity;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace Minimarket.Data
@@ -33,6 +34,37 @@ namespace Minimarket.Data
             {
                 if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
             }
+
+
+        }
+
+        public string Guardar_ca(int opcion, E_Categorias categorias)
+        {
+            string respuesta = "";
+            SqlConnection conn = new();
+            try
+            {
+
+                conn = Connection.GetConnection().CreateConnection();
+                SqlCommand Command = new("USP_Guardar_ca", conn);
+                Command.CommandType = CommandType.StoredProcedure;
+                Command.Parameters.Add("@nOpcion", SqlDbType.Int).Value = opcion;
+                Command.Parameters.Add("@nCodigo_ca", SqlDbType.Int).Value = categorias.Codigo_ca;
+                Command.Parameters.Add("@cDescripcion_ca", SqlDbType.VarChar).Value = categorias.Descripcion_ca;
+                conn.Open();
+                respuesta = Command.ExecuteNonQuery() == 1 ? "OK" : "No se pudo ingresar el registro";
+
+            }
+            catch (SqlException ex)
+            {
+                respuesta = ex.Message;
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open) conn.Close();
+            }
+
+            return respuesta;
 
 
         }

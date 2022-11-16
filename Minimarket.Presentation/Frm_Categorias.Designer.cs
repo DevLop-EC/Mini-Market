@@ -34,6 +34,7 @@
             this.Txt_buscar = new System.Windows.Forms.TextBox();
             this.Btn_buscar = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Btn_regresar = new System.Windows.Forms.Button();
             this.Btn_guardar = new System.Windows.Forms.Button();
             this.Btn_cancelar = new System.Windows.Forms.Button();
             this.Txt_descripcion_ca = new System.Windows.Forms.TextBox();
@@ -99,6 +100,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.Btn_regresar);
             this.tabPage2.Controls.Add(this.Btn_guardar);
             this.tabPage2.Controls.Add(this.Btn_cancelar);
             this.tabPage2.Controls.Add(this.Txt_descripcion_ca);
@@ -111,14 +113,26 @@
             this.tabPage2.Text = "Mantenimiento";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // Btn_regresar
+            // 
+            this.Btn_regresar.Location = new System.Drawing.Point(277, 114);
+            this.Btn_regresar.Name = "Btn_regresar";
+            this.Btn_regresar.Size = new System.Drawing.Size(75, 23);
+            this.Btn_regresar.TabIndex = 4;
+            this.Btn_regresar.Text = "Regresar";
+            this.Btn_regresar.UseVisualStyleBackColor = true;
+            this.Btn_regresar.Visible = false;
+            // 
             // Btn_guardar
             // 
-            this.Btn_guardar.Location = new System.Drawing.Point(233, 114);
+            this.Btn_guardar.Location = new System.Drawing.Point(196, 114);
             this.Btn_guardar.Name = "Btn_guardar";
             this.Btn_guardar.Size = new System.Drawing.Size(75, 23);
             this.Btn_guardar.TabIndex = 3;
             this.Btn_guardar.Text = "Guardar";
             this.Btn_guardar.UseVisualStyleBackColor = true;
+            this.Btn_guardar.Visible = false;
+            this.Btn_guardar.Click += new System.EventHandler(this.Btn_guardar_Click);
             // 
             // Btn_cancelar
             // 
@@ -128,12 +142,15 @@
             this.Btn_cancelar.TabIndex = 2;
             this.Btn_cancelar.Text = "Cancelar";
             this.Btn_cancelar.UseVisualStyleBackColor = true;
+            this.Btn_cancelar.Visible = false;
+            this.Btn_cancelar.Click += new System.EventHandler(this.Btn_cancelar_Click);
             // 
             // Txt_descripcion_ca
             // 
             this.Txt_descripcion_ca.Location = new System.Drawing.Point(115, 34);
             this.Txt_descripcion_ca.Name = "Txt_descripcion_ca";
-            this.Txt_descripcion_ca.Size = new System.Drawing.Size(193, 23);
+            this.Txt_descripcion_ca.ReadOnly = true;
+            this.Txt_descripcion_ca.Size = new System.Drawing.Size(258, 23);
             this.Txt_descripcion_ca.TabIndex = 1;
             // 
             // label1
@@ -153,6 +170,7 @@
             this.Btn_nuevo.TabIndex = 3;
             this.Btn_nuevo.Text = "Nuevo";
             this.Btn_nuevo.UseVisualStyleBackColor = true;
+            this.Btn_nuevo.Click += new System.EventHandler(this.Btn_nuevo_Click);
             // 
             // Btn_actualizar
             // 
@@ -162,6 +180,7 @@
             this.Btn_actualizar.TabIndex = 4;
             this.Btn_actualizar.Text = "Actualizar";
             this.Btn_actualizar.UseVisualStyleBackColor = true;
+            this.Btn_actualizar.Click += new System.EventHandler(this.Btn_actualizar_Click);
             // 
             // Btn_eliminar
             // 
@@ -203,6 +222,7 @@
             this.Controls.Add(this.Btn_actualizar);
             this.Name = "Frm_Categorias";
             this.Text = "Categorias";
+            this.Load += new System.EventHandler(this.Frm_Categorias_Load);
             this.Tbp_principal.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -230,5 +250,8 @@
         private Button Btn_cancelar;
         private TextBox Txt_descripcion_ca;
         private Label label1;
+        private Label label2;
+        private TextBox Lbl_total;
+        private Button Btn_regresar;
     }
 }
